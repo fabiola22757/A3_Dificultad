@@ -12,6 +12,7 @@ struct ContentView: View {
     @State var caracteristicas: String = " "
     @State var imagen: String = "sponge"
     @State var nivel: Int = 0
+    @State var pressed: Bool = false
     
     //Función a ejecutar en botones
     func cambiarNivel(_ niv: Int){
@@ -36,6 +37,7 @@ struct ContentView: View {
                 .padding(.bottom, 40)
             Image(imagen)
                 .resizable()
+                .rotationEffect(pressed ? .degrees(180):.degrees(0))
                 .frame(width: 250, height: 200)
                 .padding(.bottom, 40)
             Text(caracteristicas)
@@ -46,6 +48,7 @@ struct ContentView: View {
                 Button(action: {
                     withAnimation{
                         cambiarNivel(1)
+                        self.pressed.toggle()
                     }
                 }){
                     Text("Balde de carnada (1)")
@@ -58,6 +61,7 @@ struct ContentView: View {
                 Button(action: {
                     withAnimation{
                         cambiarNivel(2)
+                        self.pressed.toggle()
                     }
                 }){
                     Text("Cabeza de chorlito (2)")
@@ -70,6 +74,7 @@ struct ContentView: View {
                 Button(action: {
                     withAnimation{
                         cambiarNivel(3)
+                        self.pressed.toggle()
                     }
                 }){
                     Text("Cacahuate (3)")
